@@ -1,0 +1,32 @@
+% Median or Average
+
+---
+
+One of the issues I struggled with on [MTG Card Prices](http://mtg.throwingbones.com) was how to price a card, based on historical sales.
+
+My initial solution was to take the average price of the prices that had occurred in the last 4 weeks, rolling. Prices for individual cards always fluctuated a little, so smoothing out bumps worked well. Also, it was easy (MySQL has an avg() function).
+
+While it worked for most of the cards, it would occasionally lead to strange results. An example of this is the Beta Sol Ring, which had sales like this:
+
+* $1725.98
+* $110.25
+* $109.54
+* $80.98
+* $73.32
+* $69.99
+* $62
+* $25.12
+
+The $1,725.98 price is a huge outlier, and while the auction itself included other beta cards, the auction title only mentioned the Sol Ring, so of course the matcher matched it to a Beta Sol Ring
+
+So, with the above auctions, using average, the price is $253.59, which no one will pay for.
+
+Knowing that any matching system will incorrectly match an auction like this, the question becomes, "How can I get a reasonable price given the occasional outlier?".
+
+Fortunately, there is a solution to this problem, and I came across it recently while reading [Data Analysis with Open Source Tools](http://www.amazon.com/Data-Analysis-Open-Source-Tools/dp/0596802358/ref=sr_1_1?ie=UTF8&amp;qid=1311808579&amp;sr=8-1). Philip mentions that when you have a set that in not evenly distributed, you should use median, not average.
+
+Using our set of prices above, the median comes to $73.77, which is close to what someone would actually pay for a Beta Sol Ring.
+
+This is a much better solution, and it's a shame that MySQL doesn't have a built-in median function. I ended up using a [substring_index solution](http://rpbouman.blogspot.com/2007/12/calculating-financial-median-in-mysql.html) that seemed like the least painful, and didn't require any self-joins.
+
+So, the rule of thumb is: "If you know your data is evenly distributed, use average, otherwise you probably want median".

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Testing sessions with Sinatra</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../tufte.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Testing sessions with Sinatra</h1>
+</header>
+<p>I’ve got a sinatra-based app that relies on sessions and I need to test them.  After doing a little digging, here was the solution I was able to come up with: 1. Make sure that you’re setting your RACK_ENV to ‘test’ ( I do this in my Rakefile ) 2. Disable sessions in your app when in test? 3. when you make a request that requires a session, pass ‘rack.session’ =&gt; {} in the environment hash</p>
+<p>See an example of this in my app:<a href="http://github.com/benprew/picklespears" title="Picklespears Source">Picklespears</a></p>
+<p>Here’s the breakdown of the code,</p>
+<p>In the Rakefile:</p>
+<pre><code>ENV[&#39;RACK_ENV&#39;]=&#39;test&#39;</code></pre>
+<p>In the app (picklespears.rb)</p>
+<pre><code>if test?
+  set :sessions, false
+else
+  set :sessions, true
+end</code></pre>
+<p>And finally, in the test itself (test/test_player.rb)</p>
+<pre><code>post &#39;/player/update&#39;, { :name =&gt; &#39;new_name&#39; }, &#39;rack.session&#39; =&gt; { :player_id =&gt; player.id }</code></pre>
+</body>
+</html>

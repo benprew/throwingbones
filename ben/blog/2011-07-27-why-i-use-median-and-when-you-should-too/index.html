@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Median or Average</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="../tufte.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Median or Average</h1>
+</header>
+<hr />
+<p>One of the issues I struggled with on <a href="http://mtg.throwingbones.com">MTG Card Prices</a> was how to price a card, based on historical sales.</p>
+<p>My initial solution was to take the average price of the prices that had occurred in the last 4 weeks, rolling. Prices for individual cards always fluctuated a little, so smoothing out bumps worked well. Also, it was easy (MySQL has an avg() function).</p>
+<p>While it worked for most of the cards, it would occasionally lead to strange results. An example of this is the Beta Sol Ring, which had sales like this:</p>
+<ul>
+<li>$1725.98</li>
+<li>$110.25</li>
+<li>$109.54</li>
+<li>$80.98</li>
+<li>$73.32</li>
+<li>$69.99</li>
+<li>$62</li>
+<li>$25.12</li>
+</ul>
+<p>The $1,725.98 price is a huge outlier, and while the auction itself included other beta cards, the auction title only mentioned the Sol Ring, so of course the matcher matched it to a Beta Sol Ring</p>
+<p>So, with the above auctions, using average, the price is $253.59, which no one will pay for.</p>
+<p>Knowing that any matching system will incorrectly match an auction like this, the question becomes, “How can I get a reasonable price given the occasional outlier?”.</p>
+<p>Fortunately, there is a solution to this problem, and I came across it recently while reading <a href="http://www.amazon.com/Data-Analysis-Open-Source-Tools/dp/0596802358/ref=sr_1_1?ie=UTF8&amp;qid=1311808579&amp;sr=8-1">Data Analysis with Open Source Tools</a>. Philip mentions that when you have a set that in not evenly distributed, you should use median, not average.</p>
+<p>Using our set of prices above, the median comes to $73.77, which is close to what someone would actually pay for a Beta Sol Ring.</p>
+<p>This is a much better solution, and it’s a shame that MySQL doesn’t have a built-in median function. I ended up using a <a href="http://rpbouman.blogspot.com/2007/12/calculating-financial-median-in-mysql.html">substring_index solution</a> that seemed like the least painful, and didn’t require any self-joins.</p>
+<p>So, the rule of thumb is: “If you know your data is evenly distributed, use average, otherwise you probably want median”.</p>
+</body>
+</html>

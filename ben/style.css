@@ -1,0 +1,10 @@
+body { color: white; background-color: #16161D; font-family: 'Ledger', serif; }
+h1 { color: white; }
+h2 { color: white; }
+h3 { color: white; }
+li{ color: white; }
+p{ color: white; }
+p.in{ text-indent: 1em; }
+:link{ color: silver; }
+:visited{ color: silver; }
+:active{ color: silver; }
