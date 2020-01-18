@@ -1,2 +1,5 @@
+.PHONY: deploy
+
 deploy:
-	rsync -aiv --delete . throwingbones@10.0.1.2:/var/www/html/throwingbones --exclude source/ --exclude *.md --exclude Makefile --delete-excluded
+	rsync -aiv --delete --exclude source/ --exclude *.md --exclude Makefile --exclude .git --exclude *.sh --delete-excluded \
+	. throwingbones@mail.throwingbones.com:/var/www/html/throwingbones

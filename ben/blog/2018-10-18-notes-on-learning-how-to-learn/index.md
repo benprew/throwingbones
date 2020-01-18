@@ -12,14 +12,10 @@ It's a quick course and relatively light, but does a good job explaining how the
 * Focus on process not product
   * IE: doing a Pomodoro vs completing an assignment
 * Steps for Habits
-  1. Cues - important to starting the habit
-    * Can start procrastination or beneficial habit
+  1. Cues - important to starting the habit, can start procrastination or beneficial habit
   2. The Routine
-  3. The Reward
-    * going to lunch with a friend, etc
-  4. The Belief
-    * Believe that the new system works
-    * Hang out with like-minded friends
+  3. The Reward - ex going to lunch with a friend
+  4. The Belief - in the system, hang out with like-minded folks
 * Weekly list
   * Daily TODOs from weekly list above, plan at night, gives your brain time to stew on them
   * Only a few items are product oriented, items should be process oriented

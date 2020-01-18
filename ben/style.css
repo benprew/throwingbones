@@ -1,10 +1,29 @@
-body { color: white; background-color: #16161D; font-family: 'Ledger', serif; }
-h1 { color: white; }
-h2 { color: white; }
-h3 { color: white; }
-li{ color: white; }
-p{ color: white; }
-p.in{ text-indent: 1em; }
-:link{ color: silver; }
-:visited{ color: silver; }
-:active{ color: silver; }
+body {
+    color: white;
+    background-color: #16161D;
+    margin:1em auto;
+    max-width:40em;
+    padding:0 .62em;
+    font:1.2em/1.62 Cambria, Georgia, serif;
+    -- Baskerville, "Baskerville old face", "Hoefler Text", Garamond, "Times New Roman", serif;
+        -- font-family: "Lucida Bright", Georgia, serif;
+    -- font-family: 'Ledger', Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
+    -- font-family: 'Ledger', serif;
+}
+h1 {
+    line-height: 48px;
+    margin: 24px 0;
+}
+p {
+    line-height: 24px;
+    margin: 24px 0;
+}
+h1,h2,h3,li,p {
+    color: white;
+}
+p.in {
+    text-indent: 1em;
+}
+:link, :visited, :active {
+    color: silver;
+}
