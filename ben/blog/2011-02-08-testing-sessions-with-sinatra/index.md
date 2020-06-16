@@ -1,6 +1,5 @@
----
-title: Testing sessions with Sinatra
-tags: sinatra
+% Testing Sessions with Sinatra
+
 ---
 I've got a sinatra-based app that relies on sessions and I need to test them.  After doing a little digging, here was the solution I was able to come up with:
  1. Make sure that you're setting your RACK_ENV to 'test' ( I do this in my Rakefile )

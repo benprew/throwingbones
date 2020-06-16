@@ -1,0 +1,81 @@
+% Can You Improve on Emptiness?
+---
+
+A while ago Google published what they called the [\"Google Aptitude
+Test\"](http://cruftbox.com/blog/archives/001031.html), and one of the
+questions they posed (\#9 I believe) involved improving on empty space.
+After reading [several
+answers](http://mathworld.wolfram.com/news/2004-10-13/google/) to this
+question, I thought that the correct answer should have been
+\"nothing\", for several reasons.\
+\
+In terms of how it relates to Google, it appears to be one of their
+desired design goals. All right, simplicity might be the actual design
+goal, but you cannot achieve simplicity when you have a cluttered
+interface. Either way, as you look at the applications they have
+published (search, gmail, gtalk, etc), it all has a very simplistic,
+very small interface. Contrast their search homepage with that of
+Yahoo\'s. Google is very much interested in becoming a \"portal\", as
+gmail and talk both attest to. Yet, their homepage remains ever so
+sparse. So, I think its the right answer because it follows what Google
+is already attempting to achieve.\
+\
+However, if we diverge into the more philosophical, I feel there is
+another reason that the answer of \"nothing\" is correct. Back when I
+was playing guitar more regularly, and I was reading a lot of guitar
+theory, one of the books I was reading, either the [Advancing
+Guitarist](http://www.amazon.com/exec/obidos/tg/detail/-/0881885894/qid=1125110854/sr=8-1/ref=pd_bbs_1/002-2774828-2670421?v=glance&s=books&n=507846)
+or the [Heavy Guitar
+Bible](http://www.amazon.com/exec/obidos/tg/detail/-/0895240661/qid=1125110878/sr=8-1/ref=pd_bbs_1/002-2774828-2670421?v=glance&s=books&n=507846),
+they mentioned that when soloing, it is often the rests in-between notes
+that make the solo interesting.\
+\
+So it is with other things as well. The space between words and thoughts
+becomes the emphasis. If you have a blank page, you can write anything
+on it. It is blank, it can become anything, it is completely malleable.
+However, once you begin writing on it, it loses that potential. The page
+then is forced to represent an idea, solve an equation, or otherwise
+complete what has been started. It can no longer be anything you
+imagine.\
+\
+Just so I can tie this to software somehow, it is similar to an
+undefined variable; it can be anything, at least until you assign
+something to it.\
+\
+Rather then clutter up empty space with some complex math proof, or some
+essay, why not sit back and think about all the things that
+[could]{style="font-style: italic;"} go into that space. Therefore, the
+answer of \"nothing\" gives way to all that could be written or
+displayed on that empty space, without actually committing to anything.
+It gives us a chance to do what we do so rarely in life:\
+\
+pause,\
+\
+and\
+\
+think.\
+\
+Of course, by typing this all out, it kind of goes against what I just
+discussed, so I\'ll end this here, but I\'ll leave something more
+important to think about:\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\...

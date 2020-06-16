@@ -1,7 +1,7 @@
+% Command line scripts with Sinatra
+
 ---
-title: Command line scripts with Sinatra
-tags: sinatra
----
+
 There are times when I want to do batch processing or perform other
 command line activities that don't fit well into the
 web-framework. The trouble is, my db connection info is based on what

@@ -1,5 +1,4 @@
----
-title: The price effect of banning Jace and Stoneforge Mystic in Standard
+% Banning Magic Cards in Standard & The Effect on Price
 ---
 
 A few days ago,
