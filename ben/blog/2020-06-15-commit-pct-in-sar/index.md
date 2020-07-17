@@ -1,23 +1,31 @@
 % Understanding 'commit%' in Sar
----
 
-This post is my findings of what %commit means in sar output, why it can be over 100% and if it causes performance impacts.  I was looking at some examples at work where we would have %commits of 400% or more on a system that ran most of our job processing and trying to determine if that was a metric that we needed to be concerned about or not.
+### What Does %commit Mean?
 
----
+%commit is the pct of RAM the kernel has committed to processes.  Processes can request memory by using `malloc()`.
 
-The default kernel config (`vm.overcommit_memory=0`, verified with `sysctl vm.overcommit_memory`) allows the kernel to overcommit memory without actually allocating it. This means a process can ask the kernel for some memory, the kernel can approve the request, but not actually allocate that memory until the process touches the memory.
+In the default kernel configuration (`vm.overcommit_memory=0`, verified with `sysctl vm.overcommit_memory`), the kernel can commit more memory to processes than the system actually has.
 
-In the case of 300% commit, it means that if all processes requesting memory all touch the memory the kernel says they can, you'd run out of memory, but it doesn't say much about how much actual memory is being used.
+This is because it won't actually allocate the memory to the process until the process writes to that region of memory.
 
+So, it's not uncommon to see %commit in sar over 100%.
+
+In the case below, there were values of 300-400 %commit.  This means that if all processes requesting memory all touch the memory the kernel says they can, you'd run out of memory.  But it doesn't say much about how much actual memory is being used.
+
+### Is That Bad?
 Since the oom-killer wasn't invoked during those times, I'm assuming it meant the processes didn't end up using all the memory they requested.
 
-However, what could happen is that the file caches get pushed out of RAM, and since most of these files are NFS mounted, you would expect to see an increase in network traffic, because now file requests have to make a network connection instead of just writing to RAM.
+However, what could happen is that the file caches get pushed out of RAM, and file I/O could be slower because they have to access the disk (or network in the case of NFS), instead of being able to access RAM.
 
-Looking at sar, there does appear to be an increase in NFS read/write requests during that time (although the system is probably doing more work in general at that time)
+### Digging Further Into Sar
 
 `paste <(sar -r -f /var/log/sa/sa25 -s 09:00:00 -e 12:00:00) <(sar -n NFS -f /var/log/sa/sa25 -s 09:00:00 -e 12:00:00)`
 
-Also, you can look at sar -R to see what it's doing with pages:
+As the commit% spikes to 400% at 10:40, there are a lot of pages allocated (frmpg/s is negative), and a lot of cached pages deallocated (campg/s is negative).
+
+This means processes were allocating a lot of RAM while the kernel was flushing disk cache, presumably to accommodate the requests by the processes.  After that, you can see that it slows down and actually has a net positive cache page allocation.
+
+Unfortunately you can't tell how much page churn is happening, you can only tell if net allocations were +/-.
 
 ```
 09:00:01 AM kbmemfree kbmemused  %memused kbbuffers  kbcached  kbcommit   %commit       09:00:01 AM   frmpg/s   bufpg/s   campg/s
@@ -36,10 +44,11 @@ Also, you can look at sar -R to see what it's doing with pages:
 11:10:01 AM   3281380  29598504     90.02     21908   2377984 133405108    405.73       11:10:01 AM    933.05     -5.30   -763.02
 11:20:01 AM   2968336  29911548     90.97     22340   2721116 132674080    403.51       11:20:01 AM   -131.14      0.18    143.74
 ```
-Here, you can see that as the commit% spikes to 400% at 10:40, that there are a lot of pages allocated (frmpg/s is negative), and a lot of cached pages deallocated (campg/s is negative).  This means processes were allocating a lot of RAM while the kernel was flushing disk cache, presumably to accommodate the requests by the processes.  After that, you can see that it slows down and actually has a net positive cache page allocation.
 
-Unfortunately you can't tell how much page churn is happening, you can only tell if net allocations were +/-.
+### Will Adding More RAM Help?
 
-So, adding more RAM could increase the size of the file cache for file requests, which could improve performance.  But, the kbcached metric stays within an order of magnitude, while the commit bounces between 100 and 400%, so I wouldn't expect much of a change.
+Adding more RAM could increase the size of the file cache for file requests, which could improve performance.  But, the kbcached metric stays within an order of magnitude, while the commit bounces between 100 and 400%, so I wouldn't expect much of a change.
 
-Here's a good article I found on memory allocation: [http://techblog.cloudperf.net/2016/07/how-linux-kernel-manages-application_18.html](http://techblog.cloudperf.net/2016/07/how-linux-kernel-manages-application_18.html)
+### Find Out More
+
+Here's another article that describes memory allocation in depth: [http://techblog.cloudperf.net/2016/07/how-linux-kernel-manages-application_18.html](http://techblog.cloudperf.net/2016/07/how-linux-kernel-manages-application_18.html)
