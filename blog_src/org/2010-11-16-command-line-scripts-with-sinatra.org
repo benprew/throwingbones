@@ -1,34 +1,24 @@
 #+TITLE: Command Line Scripts With Sinatra
 #+AUTHOR: Ben
 #+DATE: 2010-11-16
-#+TAGS: ruby software-development
+#+TAGS: technology
 
-There are times when I want to do batch processing or perform other
-command line activities that don't fit well into the web-framework. The
-trouble is, my db connection info is based on what "environement" I'm
-working in. I could re-create the hooks to set that environment, but I'd
-rather leverage the existing capabilities in Sinatra to do so. That way
-if they change how it works in the future, I don't have to work through
-all that again.
+There are times when I want to do batch processing or perform other command line activities that don't fit well into the web-framework. The trouble is, my db connection info is based on what "environement" I'm working in. I could re-create the hooks to set that environment, but I'd rather leverage the existing capabilities in Sinatra to do so. That way if they change how it works in the future, I don't have to work through all that again.
 
-In Sinatra, there's a Delegator module that handles passing requests for
-methods like 'production?' or 'set' off to the App. With that in mind, I
-can easily just include the Delegator and let it handle everything from
-there.
+In Sinatra, there's a Delegator module that handles passing requests for methods like 'production?' or 'set' off to the App. With that in mind, I can easily just include the Delegator and let it handle everything from there.
 
 Here a sample of my code:
 
-#+begin_example
-require 'rubygems'
-require 'optparse'
-require 'sinatra/base'
+#+begin_src ruby
+  require 'rubygems'
+  require 'optparse'
+  require 'sinatra/base'
 
-include Sinatra::Delegator
-options = {}
-OptionParser.new do |op|
+  include Sinatra::Delegator
+  options = {}
+  OptionParser.new do |op|
     op.on('-e env') { |val| set :environment, val.to_sym }
-end.parse!
-#+end_example
+  end.parse!
+#+end_src
 
-You can see this on my github page as well:
-[[https://github.com/benprew/mtg/blob/master/bin/match_xtns.rb][match_xtns.rb]]
+You can see this on my github page as well: [[https://github.com/benprew/mtg/blob/master/bin/match_xtns.rb][match_xtns.rb]]

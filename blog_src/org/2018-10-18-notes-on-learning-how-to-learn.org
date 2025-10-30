@@ -1,26 +1,13 @@
 #+TITLE: Notes On Learning How To Learn
 #+AUTHOR: Ben
 #+DATE: 2018-10-18
-#+TAGS: learning reading
+#+TAGS: learning
 
-As part of reading
-[[https://web.archive.org/web/20180705170111/http://augmentingcognition.com/ltm.html][Augmenting
-Long Term Memory]] I've been trying to take notes of things I read or
-watch. I realized that I would learn something useful, but that if I
-didn't put it into use, I would forget it over time.
+As part of reading [[https://web.archive.org/web/20180705170111/http://augmentingcognition.com/ltm.html][Augmenting Long Term Memory]] I've been trying to take notes of things I read or watch. I realized that I would learn something useful, but that if I didn't put it into use, I would forget it over time.
 
-So, when I went through the Coursera course
-[[https://www.coursera.org/learn/learning-how-to-learn/][Learning How to
-Learn]], I thought I'd take notes to help me remember.
+So, when I went through the Coursera course [[https://www.coursera.org/learn/learning-how-to-learn/][Learning How to Learn]], I thought I'd take notes to help me remember.
 
-It's a quick course and relatively light, but does a good job explaining
-how the mind learns and how you can use that to improve your learning.
-It's funny, I never really thought about how I learned, and taking
-classes growing up, my "practicing" often consisted of cramming the
-night before, remember just enough for the test. So many hours spent
-being taught something, only to forget it at the end of the semester.
-Now that I've taken this course, hopefully future learnings won't be in
-vain.
+It's a quick course and relatively light, but does a good job explaining how the mind learns and how you can use that to improve your learning. It's funny, I never really thought about how I learned, and taking classes growing up, my "practicing" often consisted of cramming the night before, remember just enough for the test. So many hours spent being taught something, only to forget it at the end of the semester. Now that I've taken this course, hopefully future learnings won't be in vain.
 
 - Learning requires regular interaction, like going to the gym
 - Focus on process not product

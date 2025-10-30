@@ -1,7 +1,7 @@
 #+TITLE: Journal for the week of Sep 12th 2025
 #+AUTHOR: Ben
 #+DATE: 2025-09-12
-#+TAGS: meta spanish journal
+#+TAGS: meta languages journal
 * Quote of the Week
 "Foul deeds will rise, though all the earth overwhelm them, to men's eyes."
 

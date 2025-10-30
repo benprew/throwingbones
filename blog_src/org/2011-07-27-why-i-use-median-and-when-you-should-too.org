@@ -1,7 +1,7 @@
 #+TITLE: Why I Use Median And When You Should Too
 #+AUTHOR: Ben
 #+DATE: 2011-07-27
-#+TAGS: statistics reading meta
+#+TAGS: data-science learning meta
 
 One of the issues I struggle with on [[http://mtg.throwingbones.com][MTG Card Prices]] it how to price a card based on historical sales.
 

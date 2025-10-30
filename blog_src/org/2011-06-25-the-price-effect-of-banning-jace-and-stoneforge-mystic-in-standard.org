@@ -1,7 +1,7 @@
 #+TITLE: The Price Effect Of Banning Jace And Stoneforge Mystic In Standard
 #+AUTHOR: Ben
 #+DATE: 2011-06-25
-#+TAGS: economics
+#+TAGS: data-science
 
 A few days ago, [[http://mtg.throwingbones.com/card/33477][Jace, the Mind Sculptor]] and [[http://mtg.throwingbones.com/card/33287][Stoneforge Mystic]] were banned by Wizards. What is unexpected is that the price for a [[http://mtg.throwingbones.com/card/33372][Foil Jace]] is still high, close to $200. This may be because the are not many for sale, so their value remains high, or it may be a delayed effect of the banning, we will have to watch and see.
 

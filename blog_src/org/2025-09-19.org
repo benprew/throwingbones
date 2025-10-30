@@ -1,7 +1,7 @@
 #+TITLE: Journal for the week of Sep 19th 2025
 #+AUTHOR: Ben
 #+DATE: 2025-09-19
-#+TAGS: spanish journal reading
+#+TAGS: languages journal learning
 
 * Work
 I've been focusing on the project I received feedback on and it's been good. I can get caught trying to work on a bunch of small things and not make enough time for the big projects, so this has been a good reminder.
@@ -9,7 +9,6 @@ I've been focusing on the project I received feedback on and it's been good. I c
 I also will avoid work I don't have a good understanding of. Especially if there is a quick win I can get on another project.
 
 * Personal
-
 Playing indoor soccer 2x/week. I also try to lift weights but haven't had any time for that with work commitments.
 
 Currently reading: Hamlet by Shakespeare.  The prose to is hard to understand at times, and the sentence structure isn't different from modern English. It feels closer to the Spanish that I'm learning. Also, it feels like every other page or so, there's a quotable passage! It's really lovely.
@@ -19,9 +18,7 @@ I'm also reading Ready Player 2, mostly to fall asleep at night and because I'm 
 I also lead a tech book group that meets once a week (our spouses call it "nerd night"). We're currently reading "Why Machines Learn" about the origins of machine learning and deep learning. The chapters are pretty easy reads (20-40 pages) and I'm using AI to generate discussion questions. Since the chapters are short our meetings end up veering of topic after a while. The group seems to enjoy the conversations, so I don't push too hard on staying focused.
 
 * Coding
-
 I haven't done any personal coding the last two weeks because all my coding free time is spent on work coding. I expect it to be like this for the next 2-3 weeks until the project is shipped.
 
 * Spanish
-
 I had a conversation with a native speaker yesterday! It was fairly brief (10 mins or so), but I understood what he was saying and was able to say most of what I wanted to! I've known this person for a few years so I wasn't as nervous talking to him as I am with people I don't know.
