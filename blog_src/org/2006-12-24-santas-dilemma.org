@@ -1,0 +1,154 @@
+#+TITLE: Santas Dilemma
+#+AUTHOR: Ben
+#+DATE: 2006-12-24
+#+TAGS: software-development
+
+Over the Christmas holiday I wrote a few posts for the Perl advent
+calendar. I'd like to share them here, if only for posterity. I believe
+you should be able to view the
+[[http://perladvent.pm.org/2006/24/][archived original]].\\
+\\
+Perl Advent Calendar 2006-12-24\\
+Santa's Dilemna\\
+by Ben Prew\\
+\\
+Kris Kringle had just left the North Pole on his brand-new
+state-of-the-art sleigh, complete with wireless access to the North Pole
+presents database. The elves had been hard at work bringing present
+distribution into the 21st century, and their finishing touch was
+getting rid of Santa's old, outdated hand-written list. The
+who-is-naughty, who-is-nice, and who-wants-what lists were now stored in
+a fancy new Oracle(!) database. (Yes, Oracle got off the naughty list
+with that one)\\
+\\
+Everything was going swimmingly and Kris was picking, packing and
+delivering more presents then ever (Which is a good thing, considering
+our "conversion" program currently going on in Iraq). Unfortunately,
+just as he was sweeping into Russia, a black-bellied plover slammed into
+the side of the sleigh! Kris looked over the side and to his horror, a
+smoking hole was all that remained of his wireless link to the North
+Pole. A crackling on the radio brought Kris back to his senses. It was
+Rudolph, his main reindeer.\\
+\\
+"Captain, what was that?"\\
+\\
+"Rudy, we just got groused and lost our NP link."\\
+\\
+"KGB?"\\
+\\
+"Uhh... I don't think so."\\
+\\
+Rudolph was a huge conspiracy theory freak, and of course since they
+were over Russia, it could only be the KGB trying to sabotage Kris. They
+were trying to enact a "regime change", at least according to the
+reindeer.\\
+\\
+Kris began rooting through his system, looking for a second chance...
+anything....\\
+\\
+Any sort of land line connection... no\\
+Cell-phone card... not even Verizon has that much coverage....\\
+Tin-foil to make an improvised antenna from the reindeers antlers....
+no\\
+\\
+Wait, wait... maybe this was something....\\
+\\
+Kris realized that Norrish, his head elf, had been using his laptop to
+munge the wish list before importing it into the new database, and the
+raw text files were still sitting on his hard drive! Unfortunately, Kris
+didn't have time to install Oracle, much less the horsepower to run the
+database and import the data. He slumped back in his seat, slowly coming
+to terms with what this meant. Just as he was about to turn the sleigh
+around, Rudolph's nose lit up...\\
+\\
+"What is it boy, what are you thinking?"\\
+\\
+Rudolph started wagging his tail excitedly (yes, reindeer have tails),
+and began jostling up and down, braying and making other reindeer
+noises.\\
+\\
+"Come on Rudy, you know I can't understand you when you're this excited.
+Slow down, take a deep breath and try again"\\
+\\
+Rudolph inhaled deeply, exhaled, and then quitely, calmly uttered four
+meager syllables,\\
+\\
+"Any data?"\\
+\\
+Kris stared at Rudolph blankly, not quite sure what to make of what was
+just said. What in the blazes did that mean? Out of ideas, but with
+little else to do over the vast Siberian wasteland, Kris focused all his
+Kringle energies and attempted to decode his companion's cryptic quip.\\
+\\
+He scanned his memory, trying to dig up something, anything at all.
+Something nagged at the back of his mind, he could feel it, but he just
+couldn't mold it into a coherent thought. Suddenly, his eyes lit up, and
+quick as a wink Kris knew what Rudolph meant. The code began pouring
+from his fingers onto the screen as Kris entered the zone. His eyes
+narrowed as all other thoughts were put aside, as he intently focused on
+the task at hand.\\
+\\
+"Where were those files... in Norrish's home directory of course"\\
+\\
+"Now, the sql queries"\\
+\\
+With furious typing, a little elf magic and much unit testing (You know
+he rolls with XP), Kris had solved his problems and saved Christmas.
+Before you scroll down to the code, can you guess what characters his
+keyboard had expressed? What masterpiece he was able to piece together
+in a few short minutes, with only raw text files, and but a word from
+his most trusted reindeer? Behold, the code of Kris Kringle!\\
+mod24.pl - Kringle's Code\\
+\\
+1 #!/usr/bin/perl\\
+2\\
+3 use DBI;\\
+4\\
+5 # My files are laid out like this:\\
+6 #\\
+7 # presents.txt\\
+8 # person_no|present\\
+9 # 1|bicycle\\
+10 # 1|action figure\\
+11 # 2|doll\\
+12 # 3|doll\\
+13 # 4|bicycle\\
+14 #\\
+15 # people.txt\\
+16 # person_no|name|personality|address\\
+17 # 1|bob smith|nice|123 anywhere st, St. Petersburg\\
+18 # 2|alice andrews|nice|465 somewhere st, Moscow\\
+19 # 3|frank martonick|naughty|1138 lenin ave, St. Petersburg\\
+20 # 4|billy cutter|nice|31337 peoples lane, Moscow\\
+21\\
+22 my $dbh = DBI->connect('dbi:AnyData(RaiseError=>1):');\\
+23\\
+24 $dbh->func( 'people', 'Pipe', '/home/norrish/lists/people.txt',
+'ad_import');\\
+25 $dbh->func( 'presents', 'Pipe', '/home/norrish/lists/presents.txt',
+'ad_import');\\
+26\\
+27 my $sth = $dbh->prepare(q/\\
+28 SELECT person_no, name, address\\
+29 FROM people\\
+30 WHERE personality = ?/);\\
+31\\
+32 $sth->execute('nice');\\
+33\\
+34 while ( my $person = $sth->fetchrow_arrayref ) {\\
+35 my $presents = $dbh->selectall_arrayref(q/\\
+36 SELECT present\\
+37 FROM presents\\
+38 WHERE person_no = ?/, {}, $person->[0]);\\
+39\\
+40 print "Presents for ". $person->[1] . " (living at: ". $person->[2] .
+")\n\t",\\
+41 join("\n\t", map { join " ", @$_ } @$presents), "\n\n";\\
+42 }\\
+43\\
+44 $dbh->disconnect();\\
+\\
+DBD::AnyData is a Perl module that allows one to, among other things,
+use a variety of (mostly text) file formats as tables in a database. It
+seems to have limited support for joins, so I had to do the queries
+separately. Even so, AnyData is really cool!

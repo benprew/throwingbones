@@ -1,0 +1,38 @@
+#+TITLE: Testing Sessions with Sinatra
+#+AUTHOR: Ben
+#+DATE: 2011-02-08
+#+TAGS: software-development
+
+I've got a sinatra-based app that relies on sessions and I need to test
+them. After doing a little digging, here was the solution I was able to
+come up with:
+
+1. Make sure that you're setting your RACK_ENV to 'test' (I do this in my Rakefile)
+2. Disable sessions in your app when in test?
+3. when you make a request that requires a session, pass 'rack.session' => {} in the environment hash
+
+See an example of this in my app: [[http://github.com/benprew/picklespears][Picklespears]]
+
+Here's the breakdown of the code,
+
+In the Rakefile:
+
+#+begin_example
+ENV['RACK_ENV']='test'
+#+end_example
+
+In the app (picklespears.rb)
+
+#+begin_example
+if test?
+  set :sessions, false
+else
+  set :sessions, true
+end
+#+end_example
+
+And finally, in the test itself (test/test_player.rb)
+
+#+begin_example
+post '/player/update', { :name => 'new_name' }, 'rack.session' => { :player_id => player.id }
+#+end_example

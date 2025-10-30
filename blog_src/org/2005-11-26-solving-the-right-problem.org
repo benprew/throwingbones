@@ -1,0 +1,58 @@
+#+TITLE: Solving The Right Problem
+#+AUTHOR: Ben
+#+DATE: 2005-11-26
+#+TAGS: software-development reading meta
+
+I was recently reading "Good to Great", which is a little outside my
+typical book selection, and as I was reading how a company makes the
+jump from a "good" company to a "great" company I started thinking about
+how people, specifically me, could make the jump from good or mediocre
+to great.
+
+One of the points the book brought up, which I'm sure most of us have
+heard before, is that good, not bad, is the enemy of great. Once we get
+to good, we tend to stop striving, we get comfortable; lazy.\\
+
+That got me thinking about the coding I do on the side, and how I choose
+the coding problems that I worked on. I think that you will agree, not
+all coding problems are created equal, and I realized that while I was
+working on several things, often times I was taking on pop-code projects
+(yes I made up that word). Projects that were simple or more quickly
+rewarding, but didn't necessarily stretch me as a developer, similar to
+pop music or soda pop. A project that would be simple to do, and not
+allow myself much of a chance to explore the theoretical side of
+computer science.
+
+One can bang out code all day long and never have to even touch a
+hashtable, or write their own binary tree. In my opinion, banging out
+code all day is something I could teach my dog to do, or at the very
+least I expect these kinds of things to be solved in the near future
+(~20 years) by higher level languages. Just as we write in C++/Perl/etc
+now, and we can't imagine writing all our code in assembly, I'm sure the
+next generation will look down on our very verbose languages.\\
+
+I think in order to stretch oneself as a developer, one should take on
+problems that you can't solve easily, or that require several iterations
+to solve. Not only that, but solving a problem you don't know how to
+solve, it often requires continuous learning.
+
+I'm not sure if I can really explain how to stretch yourself; I'm not
+good enough to generalize a solution, I can only scramble and reach for
+ways to do it myself.\\
+
+To that end, I'm going to try taking on more difficult solutions.
+Solutions that /require/ that I understand the problem domain and learn
+about algorithms that are needed for that area.
+
+My current plan is to make a bicycle route for Google maps, that would
+only use bicycle routes, so it wouldn't suggest trying to ride on
+interstates or other bicycle un-friendly roads. Not only that, but it
+would take elevation changes into account.
+
+So far, I've found that Seattle has GIS data available, although its in
+"shapefile" format, and may not have latitude and longitude information.
+If I get can retrieve latitude and longitude information, the USGS has a
+webservice that can give you an elevation based on lat and long.
+
+I'll let you know how it turns out...\\
+:::

@@ -1,0 +1,16 @@
+#+TITLE: How to Identify Essentials
+#+AUTHOR: Ben
+#+VALUE_PER_WORD: t
+#+DATE: 2025-10-05
+#+TAGS: philosophy
+
+Ask yourself the following questions when evaluating if something is essential:
+1. What are your values? The principles you live by.
+2. What are your goals? Short and long term. What do you want to achieve in life?
+3. What do you love? Who do you love spending time with?
+4. What is important to you? In life, in work, etc
+5. What has the biggest impact? When choosing between projects
+6. What has the most long term impact?
+7. Needs vs wants. Most wants can be eliminated
+8. Eliminate the nonessential - work backward eliminating the nonessential first, what's left is more essential. May take several passes
+9. Keep editing - things change, so will your essentials list. Don't keep doing something that has become nonessential. Make a first pass, come back in a week and make another pass, keep doing this until you're happy you only have essential work
