@@ -2,15 +2,36 @@
 
 # Blog publishing script with tag support
 # This script publishes the blog and generates tag pages
+#
+# Usage: ./publish.sh [-f|--force]
+#   -f, --force    Force republish all files (clears timestamp cache)
 
-cd ~/src/throwingbones/blog_src
+FORCE=false
 
-echo "Publishing blog..."
-emacs --batch -q --load ~/dotfiles/blog/init.el --eval "(org-publish-all)"
+# Parse arguments
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    -f|--force)
+      FORCE=true
+      shift
+      ;;
+    *)
+      echo "Unknown option: $1"
+      echo "Usage: ./publish.sh [-f|--force]"
+      exit 1
+      ;;
+  esac
+done
 
-echo "Generating tag pages and index..."
-emacs --batch -q --load ~/dotfiles/blog/init.el --eval "(progn (clrhash my-blog-tags-table) (clrhash my-blog-posts-table) (dolist (file (directory-files \"~/src/throwingbones/blog_src/org\" t \"\\.org$\")) (my-blog-collect-tags file \"~/src/throwingbones/ben/blog\")) (my-blog-generate-tag-pages \"~/src/throwingbones/ben/blog\") (my-blog-generate-index-page \"~/src/throwingbones/ben/blog\"))"
+# Clear cache if force flag is set
+if [ "$FORCE" = true ]; then
+  echo "Force republish: clearing timestamp cache..."
+  rm -rf ~/.org-timestamps/
+fi
+
+echo "Publishing blog (with tags and index)..."
+emacs --batch -q --load elisp/init.el --eval "(org-publish-all)"
 
 echo "Blog published successfully!"
 echo "Generated files:"
-ls -la ~/src/throwingbones/ben/blog/
+ls -la ../ben/blog/
