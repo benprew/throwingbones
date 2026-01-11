@@ -1,0 +1,82 @@
+#+TITLE: 2025 Book Group: Learning in the Year of AI
+#+AUTHOR: Ben
+#+DATE: 2026-01-10
+#+TAGS: book-group
+
+
+This post covers the topics my book group explored in 2025, complete with my notes and reviews. Comprised mostly of former and current co-workers, we are a group of senior engineers and tech enthusiasts who gather monthly to learn something new or debate the merits of a specific topic.
+
+While we cover a wide range of subjects, 2025 had an undeniable gravitational center: Artificial Intelligence.
+
+Looking back at our schedule, you can see a clear narrative arc mirroring the industry's own struggle with this technology. We started the year with traditional career advice, pivoted hard into the mechanics of "Prompt Engineering" in March, and then spent the subsequent months questioning the value of foundational knowledge in a world of intelligent agents. By the end of the year, even our discussions on software design were filtered through the lens of, "Does this matter if an AI writes the code?"
+
+Here is a retrospective of our reading list and how our thinking evolved throughout the year.
+
+** Logistics Note
+We maintain a backlog of potential topics in a shared doc. When it's time to choose, we vote on a shortlist using a custom implementation of [[https://en.wikipedia.org/wiki/Black%27s_method][Black's method]] (rank-choice voting) [[[https://gist.github.com/benprew/4328b6d38c01d7e35bfc77671bda430a][source code]]].
+
+
+* [[https://www.amazon.com/Software-Developers-Career-Handbook-Unpredictable/dp/1098116674][February - The Software Developer's Career Handbook: A Guide to Navigating the Unpredictable]]
+** Abstract
+Authored by Michael Lopp, also known as [[https://randsinrepose.com/][Rands in Repose]], this book is a comprehensive guide to managing your career as a software developer, from individual contributor to leadership roles.
+
+** Summary Review
+I found some of the chapters better than others but overall it felt like a collection of blog posts rather than a complete book that had a strong narrative. Part 1 is the strongest part of the book and focuses the most on IC and career development. Part 2 has a mix of good/bad chapters and Parts 3 & 4 feel like a hodgepodge of topics related to generic career advice, management, culture and a little bit of everything in-between.
+
+* March - AI Prompting Course
+** Summary Review
+A collection of blog posts on how to write better prompts. We had looked at several options and because things were advancing so quicky most of the published books looked out of date. Looking back it's surprising how much the state of the art has advanced from March.
+
+We did a lot of reading on prompt construction and the emerging Meta Context Protocol, but I spend very little time "engineering" my prompts or configuring MCP servers to do things. Turns out as the AIs got smarter they could write better code and could use basic unix tools to get most of the work done.
+
+Most of these blog posts are outdated now. Prompt engineering has mostly gone away. Writing a good prompt is still important, but requires fewer "tricks". Instead specifying the request clearly and in detail is more important. Agentic tools often have a "plan" then "implement" cycle built into them that highlight areas that need clarification.
+
+Highlights:
+  - [[https://www.oreilly.com/radar/the-end-of-programming-as-we-know-it/?ref=ghuntley.com][The End of Programming as We Know It]]
+  - [[https://steve-yegge.medium.com/the-death-of-the-stubborn-developer-b5e8f78d326b][The Death of the Stubborn Developer]]
+  - [[https://sourcegraph.com/blog/the-death-of-the-junior-developer][The Death of the Junior Developer]]
+
+Edging Toward Glory:
+  - [[https://harper.blog/2025/02/16/my-llm-codegen-workflow-atm/][My Codegen Workflow]]
+  - [[https://simonwillison.net/2025/Mar/11/using-llms-for-code/][Here's how I use LLMs to help me write code]]
+
+Tired:
+  - [[https://developers.google.com/machine-learning/resources/prompt-eng][Prompt Engineering v2 - Google]]
+  - [[https://ai.google.dev/gemini-api/docs/prompting-strategies][Prompt Design Strategies - Google]]
+  - [[https://platform.openai.com/docs/guides/prompt-engineering][Prompt Engineering - OpenAI]]
+  - [[https://github.com/VILA-Lab/ATLAS/blob/main/data/README.md][26 Prompt Principles]]
+
+
+* [[https://app.codecrafters.io/catalog][April - Build Your Own X]]
+** Abstract
+Use AI prompting to build a system. Some options:
+- [[https://app.codecrafters.io/courses/kafka/overview][Kafka]]
+- [[https://app.codecrafters.io/courses/http-server/overview][HTTP Server]]
+- [[https://app.codecrafters.io/courses/interpreter/overview][Interpreter]]
+
+** Summary Review
+This was a follow up to the AI Prompting Course. After we had learned how to prompt AIs this was a chance to put it into practice.
+
+I tried doing the Kafka course, but it quickly became about implementing the Kafka API rather than building the conceptual underpinnings of Kafka, which would've been much more interesting. One of the other members did the HTTP Server in Kotlin and it looked like a better course. Also, HTTP is a simpler protocol and there are a lot of examples to draw on.
+
+* [[https://www.amazon.com/Algorithm-Design-Manual-Computer-Science/dp/3030542580][May - The Algorithm Design Manual]]
+** Abstract
+A widely recommended algorithms book that aims to be more accessible than a standard encyclopedia. The first half focuses on "war stories" and practical application, while the second half serves as a reference catalog for algorithms and data structures.
+
+** Summary Review
+This was a very dense book but not too math heavy. We read the first part and did some of the questions at the end of each chapter. I found myself wondering when we would use some of the algorithms discussed in the book, even without going into the second half, which is very much a reference. I think it's good to have an exposure to some of these less-common algorithms, but it's hard to know when and how to apply them. Knowing that an algorithm exists is the first step, knowing when to apply it is even more important. Even if we don't know how to _implement_ it, knowing it exists is helpful. AI should be able to write the implementation, but may not recognize when an algorithm should be used.
+* [[https://www.amazon.com/Why-Machines-Learn-Elegant-Behind/dp/0593185749][Aug - Why Machines Learn]]
+** Abstract
+A narrative explanation of the mathematics behind machine learning, covering the history of the field and its pioneering researchers. It aims to make the underlying math accessible to a broader audience.
+
+** Summary Review
+I really enjoyed this book, though it focused more on machine learning and early neural network contributions and little on modern LLMs. Despite being published in mid-2024 I would've like more details on modern neural nets, transformers and attention, all discovered well before the publish date (2015-2020). The last chapter/Epilogue discusses LLMs, but it felt like it was thrown in late as the book went to publishing.
+* [[https://www.amazon.com/Philosophy-Software-Design-2nd/dp/173210221X][Oct - A Philosophy of Software Design, 2nd Edition]]
+** Abstract
+This book explores the core challenge of software design: managing complexity. It advocates for breaking down systems into manageable, deep modules and provides principles to reduce complexity and improve maintainability.
+
+** Summary Review
+I took a lot of notes for this book and had a lot of thoughts about software design. Generally I agreed with the author and most of his suggestions made sense, especially his treatment of comments. It encouraged me to improve my code comments. All of this is taken with a grain of salt with AIs though. If I'm not writing the code anymore, will I go back and add comments? Why won't I just tell the AI to do it. This ties back to "The End of Programming as We Know it", maybe we won't be thinking about programming at this level much anymore. Having read books from the early microcomputer era "Soul of a New Machine" I can certainly say that there's a lot of things that programmings in those days thought about that I don't think about anymore. Is low-level software design going that way too?
+
+* Conclusion
+Looking back at 2025, it’s clear that while the fundamentals of software engineering (algorithms, design, career growth) remain important, our interaction with them has fundamentally shifted. We spent as much time learning how to delegate to machines (AI) as we did learning the machines themselves. In 2026, we're planning to continue down this path, diving deeper into agentic workflows and how they will reshape the role of the software engineer.
