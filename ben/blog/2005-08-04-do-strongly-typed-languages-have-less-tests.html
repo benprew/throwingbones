@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Do Strongly Typed Languages Have Less Tests?</title>
+<meta name="author" content="Ben" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Do Strongly Typed Languages Have Less Tests?</h1>
+<p><strong>Tags:</strong> <span class="tags"><a href="tags/technology.html">technology</a> <a href="tags/learning.html">learning</a> <a href="tags/meta.html">meta</a></span></p>
+
+<p>
+This isn't meant to be an answer, or even truthful, more just something to think about. Just me ruminating on various floaties in my head. Maybe its true, maybe its not, I don't have the visual landscape to know for certain, and should not be taken as such. Think of it more as one-sided dinner conversation.
+</p>
+
+<p>
+Anyway, I was thinking about testing in loosly-typed languages, and how at the last company I worked for, where I only wrote in loosly-typed languages (Perl), that having tests written for our software was not only a Good Thing, but a necessity. There were many, many problems we caught via tests that we would not have caught until they bit us in a production environment.
+</p>
+
+<p>
+However, most of C++ and Java code I've seen recently doesn't have any tests, nor with the complexity of the system could you test everything. Even without testing, the software runs, perhaps better then I expected. Although high quality software has been written without tests, so having tests is not a requirement for high-quality software, but that's not the point&#x2026;
+</p>
+
+<p>
+The point is more a comparison between strongly-typed an loosely-typed languages. In strong typing, the compiler does a lot of the checking work for you, even though in languages like C++ and Java, you have to be explicit about the type (which I find revulting, personally), so many of the tests you might write are already covered by the compiler.
+</p>
+
+<p>
+In comparison, with Perl, you won't find out if you can call a method until run-time. This forces you to create tests that confirm that your code, can indeed, call the methods you want to call, on the objects you want to call them on.
+</p>
+
+<p>
+In effect, part of your test suite becomes a simple-compiler, checking for certain things that strongly-typed languages have already checked. This poses a strange question, are you coders writing tests, or fixing a "broken" compiler? Is the compiler that broken to begin with?
+</p>
+
+<p>
+Apparently, I'm not the first person to have thoughts like this (<a href="http://www.artima.com/intv/strongweak.html">http://www.artima.com/intv/strongweak.html</a>), but I'm no Guido Van Rossum, even on my better days.
+</p>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2005-08-04</p>
+<p class="author">Author: Ben</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Testing Sessions with Sinatra</title>
+<meta name="author" content="Ben" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Testing Sessions with Sinatra</h1>
+<p><strong>Tags:</strong> <span class="tags"><a href="tags/technology.html">technology</a></span></p>
+
+<p>
+I've got a sinatra-based app that relies on sessions and I need to test them. After doing a little digging, here was the solution I was able to come up with:
+</p>
+
+<ol class="org-ol">
+<li>Make sure that you're setting your RACK_ENV to 'test' (I do this in my Rakefile)</li>
+<li>Disable sessions in your app when in test?</li>
+<li>when you make a request that requires a session, pass 'rack.session' =&gt; {} in the environment hash</li>
+</ol>
+
+<p>
+See an example of this in my app: <a href="http://github.com/benprew/picklespears">Picklespears</a>
+</p>
+
+<p>
+Here's the breakdown of the code,
+</p>
+
+<p>
+In the Rakefile:
+</p>
+<div class="org-src-container">
+<pre class="src src-ruby">ENV['RACK_ENV']='test'
+</pre>
+</div>
+
+<p>
+In the app (picklespears.rb)
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ruby">if test?
+  set :sessions, false
+else
+  set :sessions, true
+end
+</pre>
+</div>
+
+<p>
+And finally, in the test itself (test/test_player.rb)
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ruby">post '/player/update', { :name =&gt; 'new_name' }, 'rack.session' =&gt; { :player_id =&gt; player.id }
+</pre>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2011-02-08</p>
+<p class="author">Author: Ben</p>
+</div>
+</body>
+</html>

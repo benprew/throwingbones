@@ -1,5 +1,0 @@
-# Ignore generated blog files but track source
-ben/blog/*.html
-ben/blog/**/*.html
-ben/blog/*.css
-blog_src/public

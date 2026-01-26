@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Can Software Get Big Fast</title>
+<meta name="author" content="Ben" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Can Software Get Big Fast</h1>
+<p><strong>Tags:</strong> <span class="tags"><a href="tags/technology.html">technology</a> <a href="tags/learning.html">learning</a></span></p>
+
+<p>
+I recently joined a certain company as a software engineer, and during one of the discussions I was having, someone mentioned that it was a certain mentality (Get Big Fast), that allowed this company to thrive. I was pondering, as I often do, about how one could apply that to developing a software product, and if that is a reasonable software design model.
+</p>
+
+<p>
+Moving to a software development standpoint, this means that the focus of the software product should be meeting the customers needs, and that all other concerns are secondary.
+</p>
+
+<p>
+This means that things like adding new features, and cleaning up the interface, are more important then the condition of the underlying code. This does not mean that the underlying code is not important, it is just less important.
+</p>
+
+<p>
+As an real-world example (the project which I am attempting to use this strategy on), say you have a system that parses FPS log files and generates static .html pages based on the data. This system isn't very large (about 6k lines of Perl), and its already partially broken up into several objects (~15).
+</p>
+
+<p>
+Say that you now wanted to track a particular type of event that only occurs in one or two types of FPS logs, but not in all of them. Not only that, but on the reports, you do not want to display information that is possibly not tracked by that logfile.
+</p>
+
+<p>
+Our example is a headshot, where a player shoots another player in the head. This is only tracked on games that log what location a player was hit in, some do, while others do not.
+</p>
+
+<p>
+The "correct" way would probably be to have a set of attributes that each logfile has, and then have the reports only publish those attributes. But, there is nothing in the code that allows for this. Rather then create a larger scheme that will allow for future capabilities, you attempt to add that change in the fastest way possible. This allows you to get the new feature out to the customer faster, even though it may not be the best solution design-wise.
+</p>
+
+<p>
+I believe that I can apply this thinking to an open source software project I am working on now (<a href="http://sf.net/projects/gamestats">http://sf.net/projects/gamestats</a>). I believe this software project is especially suited to this sort of philosphy. Its small enough that 1-2 people can wrap their head around the entire project, and easy enough to test the entire system that its possible to put out a release every day, given the time.
+</p>
+
+<p>
+This sort of project can use the "Get Big Fast" design philosphy because you can keep track of all the little ugly 'hacks' you have put in. After you've gotten "Big", you can evaluate the code and refactor the appropriate methods.
+</p>
+
+<p>
+Its a little along the lines of XP (<a href="http://extremeprogramming.org">http://extremeprogramming.org</a>), but it advocates even less fore-thought, as code is secondary to customers. I do not know if this would work in a project of any real importance, but I belive MPlayer has adopted a similar strategy, where they do not concern themselves with the quality or the beauty of the code, and instead focus on adopting new formats as fast as possible.
+</p>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2005-08-04</p>
+<p class="author">Author: Ben</p>
+</div>
+</body>
+</html>
