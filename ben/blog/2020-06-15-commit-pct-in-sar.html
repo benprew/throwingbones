@@ -15,9 +15,9 @@
 <h1 class="title">Commit Pct In Sar</h1>
 <p><strong>Tags:</strong> <span class="tags"><a href="tags/programming.html">programming</a></span></p>
 
-<div id="outline-container-org7aa3dd9" class="outline-2">
-<h2 id="org7aa3dd9">What Does %commit Mean?</h2>
-<div class="outline-text-2" id="text-org7aa3dd9">
+<div id="outline-container-what-does-commit-mean" class="outline-2">
+<h2 id="what-does-commit-mean">What Does %commit Mean?</h2>
+<div class="outline-text-2" id="text-what-does-commit-mean">
 <p>
 %commit is the pct of RAM the kernel has committed to processes. Processes can request memory by using <code>malloc()</code>.
 </p>
@@ -39,9 +39,9 @@ In the case below, there were values of 300-400 %commit. This means that if all 
 </p>
 </div>
 </div>
-<div id="outline-container-org7189d9a" class="outline-2">
-<h2 id="org7189d9a">Is That Bad?</h2>
-<div class="outline-text-2" id="text-org7189d9a">
+<div id="outline-container-is-that-bad" class="outline-2">
+<h2 id="is-that-bad">Is That Bad?</h2>
+<div class="outline-text-2" id="text-is-that-bad">
 <p>
 Since the oom-killer wasn't invoked during those times, I'm assuming it meant the processes didn't end up using all the memory they requested.
 </p>
@@ -51,9 +51,9 @@ However, what could happen is that the file caches get pushed out of RAM, and fi
 </p>
 </div>
 </div>
-<div id="outline-container-org66d156a" class="outline-2">
-<h2 id="org66d156a">Digging Further Into Sar</h2>
-<div class="outline-text-2" id="text-org66d156a">
+<div id="outline-container-digging-further-into-sar" class="outline-2">
+<h2 id="digging-further-into-sar">Digging Further Into Sar</h2>
+<div class="outline-text-2" id="text-digging-further-into-sar">
 <p>
 <code>paste &lt;(sar -r -f /var/log/sa/sa25 -s 09:00:00 -e 12:00:00) &lt;(sar -n NFS -f /var/log/sa/sa25 -s 09:00:00 -e 12:00:00)</code>
 </p>
@@ -90,17 +90,17 @@ Unfortunately you can't tell how much page churn is happening, you can only tell
 </div>
 </div>
 </div>
-<div id="outline-container-orgd8e3dab" class="outline-2">
-<h2 id="orgd8e3dab">Will Adding More RAM Help?</h2>
-<div class="outline-text-2" id="text-orgd8e3dab">
+<div id="outline-container-will-adding-more-ram-help" class="outline-2">
+<h2 id="will-adding-more-ram-help">Will Adding More RAM Help?</h2>
+<div class="outline-text-2" id="text-will-adding-more-ram-help">
 <p>
 Adding more RAM could increase the size of the file cache for file requests, which could improve performance. But, the kbcached metric stays within an order of magnitude, while the commit bounces between 100 and 400%, so I wouldn't expect much of a change.
 </p>
 </div>
 </div>
-<div id="outline-container-orgfe8ce90" class="outline-2">
-<h2 id="orgfe8ce90">Find Out More</h2>
-<div class="outline-text-2" id="text-orgfe8ce90">
+<div id="outline-container-find-out-more" class="outline-2">
+<h2 id="find-out-more">Find Out More</h2>
+<div class="outline-text-2" id="text-find-out-more">
 <p>
 Here's another article that describes memory allocation in depth: <a href="http://techblog.cloudperf.net/2016/07/how-linux-kernel-manages-application_18.html">http://techblog.cloudperf.net/2016/07/how-linux-kernel-manages-application_18.html</a>
 </p>

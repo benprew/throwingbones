@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Shandalar 30 - April Update</title>
+<meta name="author" content="Ben" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Shandalar 30 - April Update</h1>
+<p><strong>Tags:</strong> <span class="tags"><a href="tags/s30.html">s30</a> <a href="tags/programming.html">programming</a></span></p>
+
+<p>
+I've been excited to see how much interest there's been in Shandalar 30th Anniversary edition, <a href="https://throwingbones.com/ben/blog/s30-alpha.html">original release announcement</a>.
+</p>
+
+<p>
+Here's what's changed since the last update:
+</p>
+
+<ul class="org-ul">
+<li>Engine Improvements: migrated to <a href="https://github.com/benprew/mage-go">mage-go</a> MTG rules engine, this includes support for over 80% of the cards in the Shandalar universe</li>
+
+<li>Android Version: you have to sideload it. The overworld works, but the duel screen doesn't support touch gestures yet. Get it <a href="https://github.com/benprew/s30/releases">here</a>.</li>
+
+<li>Game Balance: expanded wiseman boons, excluded P9/special cards from starting decks and stores (occasionally you could buy a Sol Ring).</li>
+
+<li>Audio: the game has sound! I used the original sound effects though I might have the wrong effects in some places</li>
+
+<li>Card Power scoring: I trained an ML model (BERT) to estimate card power, which I can use when generating starting decks and reward cards. This also means as new cards are added it will be able to build crappy starting decks and scale rewards.</li>
+</ul>
+
+<p>
+Next Steps:
+</p>
+
+<ul class="org-ul">
+<li>Improve AI opponent</li>
+<li>Increase game engine card coverage to 100%</li>
+<li>Add dungeons/castles</li>
+</ul>
+
+<p>
+If you want to follow along or contribute, the project is on <a href="https://github.com/benprew/s30">GitHub</a>. Bug reports, card implementations, and play testing are all welcome! Check out the <a href="https://github.com/benprew/s30/blob/main/CONTRIBUTING.md">contributing guide</a> to get started. Feel free to ask questions on the github repo or on <a href="https://reddit.com/r/shandalar">reddit</a>.
+</p>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2026-04-21</p>
+<p class="author">Author: Ben</p>
+</div>
+</body>
+</html>
